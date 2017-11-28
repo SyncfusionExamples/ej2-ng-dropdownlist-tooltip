@@ -23,18 +23,29 @@ export class AppComponent {
     //set the placeholder to DropDownList input
     public text: string = "Select game";
     public  onOpen: any  = (args:PopupEventArgs) => {
-      // get all the list items
-      let listItems: any = args.popup.element.querySelectorAll('li');
-      let length: number = listItems.length;
-      for (let i: number = 0; i < length; i++) {
-        // set title attribute to all the list items.
-        listItems[i].setAttribute('title', listItems[i].textContent);
-      }
+        // set title to overflow text list
+        if (this.isTooltip) {
+          setTimeout(() => {
+            // get all the list items
+            let listItems: HTMLElement[] = <any>args.popup.element.querySelectorAll('li');
+            listItems.forEach(element => {
+              if (element.offsetWidth < element.scrollWidth) {
+                element.setAttribute('title', element.textContent);
+              }
+            });
+            this.isTooltip = false;
+          }, 100);
+        }
     }
     public onChange: any = (args: SelectEventArgs) => {
       let dropdown: HTMLElement = document.getElementById('ddlelement');
+      let input: HTMLInputElement = dropdown.querySelector('input');
       // set tooltip to selected item which is shown in input element.
-      dropdown.setAttribute('title', args.item.textContent);
-    }
+      if (input.offsetWidth < input.scrollWidth) {
+         dropdown.setAttribute('title', args.item.textContent);
+      } else {
+         dropdown.removeAttribute('title');
+      }
+   }
 }
 
