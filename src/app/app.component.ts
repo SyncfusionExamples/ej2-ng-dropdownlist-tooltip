@@ -22,6 +22,7 @@ export class AppComponent {
     public fields: Object = { text: 'Game', value: 'Id' };
     //set the placeholder to DropDownList input
     public text: string = "Select game";
+    private isTooltip: boolean = true;
     public  onOpen: any  = (args:PopupEventArgs) => {
         // set title to overflow text list
         if (this.isTooltip) {
