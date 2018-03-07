@@ -5,7 +5,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 @Component({
     selector: 'my-app',
     // specifies the template string for the DropDownList component with change event
-    template: `<ej-dropdownlist id='ddlelement' #samples (open)='onOpen($event)' (change)='onChange($event)' [dataSource]='data' [fields]='fields' [placeholder]='text'></ej-dropdownlist>`
+    template: `<ejs-dropdownlist id='ddlelement' #samples (open)='onOpen($event)' (change)='onChange($event)' [dataSource]='data' [fields]='fields' [placeholder]='text'></ejs-dropdownlist>`
 })
 export class AppComponent {
     constructor() {
